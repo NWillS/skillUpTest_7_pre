@@ -14,6 +14,10 @@
 		BE65BAA01FFE006300EBE0B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE65BA9E1FFE006300EBE0B7 /* LaunchScreen.storyboard */; };
 		BE65BAAB1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAAA1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift */; };
 		BE65BABC1FFE015300EBE0B7 /* RealmDaoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BABB1FFE015300EBE0B7 /* RealmDaoHelper.swift */; };
+		BE65BAC01FFE0BB300EBE0B7 /* TaskDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BABF1FFE0BB300EBE0B7 /* TaskDto.swift */; };
+		BE65BAC21FFE0C0D00EBE0B7 /* TaskDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAC11FFE0C0D00EBE0B7 /* TaskDao.swift */; };
+		BE65BAC41FFE24E300EBE0B7 /* FolderDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAC31FFE24E300EBE0B7 /* FolderDto.swift */; };
+		BE65BAC61FFE255400EBE0B7 /* FolderDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAC51FFE255400EBE0B7 /* FolderDao.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,10 @@
 		BE65BAAA1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skillUpTest_7_preTests.swift; sourceTree = "<group>"; };
 		BE65BAAC1FFE006400EBE0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE65BABB1FFE015300EBE0B7 /* RealmDaoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDaoHelper.swift; sourceTree = "<group>"; };
+		BE65BABF1FFE0BB300EBE0B7 /* TaskDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDto.swift; sourceTree = "<group>"; };
+		BE65BAC11FFE0C0D00EBE0B7 /* TaskDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDao.swift; sourceTree = "<group>"; };
+		BE65BAC31FFE24E300EBE0B7 /* FolderDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDto.swift; sourceTree = "<group>"; };
+		BE65BAC51FFE255400EBE0B7 /* FolderDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDao.swift; sourceTree = "<group>"; };
 		CCF96E37C979684CF6F4DAE3 /* Pods-skillUpTest_7_preTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skillUpTest_7_preTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-skillUpTest_7_preTests/Pods-skillUpTest_7_preTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB54B10A629015AA133F6681 /* Pods_skillUpTest_7_pre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skillUpTest_7_pre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,7 +117,7 @@
 			children = (
 				BE65BABA1FFE015300EBE0B7 /* Helpers */,
 				BE65BAB91FFE00C800EBE0B7 /* Models */,
-				BE65BAB81FFE00C200EBE0B7 /* VIews */,
+				BE65BAB81FFE00C200EBE0B7 /* Views */,
 				BE65BAB61FFE00A700EBE0B7 /* Controllers */,
 				BE65BAB51FFE009300EBE0B7 /* Others */,
 			);
@@ -151,16 +159,18 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
-		BE65BAB81FFE00C200EBE0B7 /* VIews */ = {
+		BE65BAB81FFE00C200EBE0B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = VIews;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BE65BAB91FFE00C800EBE0B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BE65BABE1FFE0B8000EBE0B7 /* Task */,
+				BE65BABD1FFE0B7400EBE0B7 /* Folder */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,6 +181,24 @@
 				BE65BABB1FFE015300EBE0B7 /* RealmDaoHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BE65BABD1FFE0B7400EBE0B7 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				BE65BAC31FFE24E300EBE0B7 /* FolderDto.swift */,
+				BE65BAC51FFE255400EBE0B7 /* FolderDao.swift */,
+			);
+			path = Folder;
+			sourceTree = "<group>";
+		};
+		BE65BABE1FFE0B8000EBE0B7 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				BE65BABF1FFE0BB300EBE0B7 /* TaskDto.swift */,
+				BE65BAC11FFE0C0D00EBE0B7 /* TaskDao.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,8 +422,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE65BAC61FFE255400EBE0B7 /* FolderDao.swift in Sources */,
 				BE65BABC1FFE015300EBE0B7 /* RealmDaoHelper.swift in Sources */,
 				BE65BA961FFE006300EBE0B7 /* AppDelegate.swift in Sources */,
+				BE65BAC01FFE0BB300EBE0B7 /* TaskDto.swift in Sources */,
+				BE65BAC21FFE0C0D00EBE0B7 /* TaskDao.swift in Sources */,
+				BE65BAC41FFE24E300EBE0B7 /* FolderDto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
