@@ -16,7 +16,7 @@ final class FolderDao{
         let folder = FolderDto()
         folder.folderId = FolderDao.daoHelper.newId()!
         folder.folderName = name
-        folder.updatedate = Date()
+        folder.updateDate = Date()
         
         FolderDao.daoHelper.add(object: folder)
     }

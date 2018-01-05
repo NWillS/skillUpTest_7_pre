@@ -18,6 +18,12 @@
 		BE65BAC21FFE0C0D00EBE0B7 /* TaskDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAC11FFE0C0D00EBE0B7 /* TaskDao.swift */; };
 		BE65BAC41FFE24E300EBE0B7 /* FolderDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAC31FFE24E300EBE0B7 /* FolderDto.swift */; };
 		BE65BAC61FFE255400EBE0B7 /* FolderDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAC51FFE255400EBE0B7 /* FolderDao.swift */; };
+		BE65BACC1FFF69A300EBE0B7 /* MocRealmFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BACB1FFF69A300EBE0B7 /* MocRealmFolder.swift */; };
+		BE65BACE1FFF6A6B00EBE0B7 /* MocRealmTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BACD1FFF6A6B00EBE0B7 /* MocRealmTask.swift */; };
+		BE65BAD01FFF6AD300EBE0B7 /* TaskDtoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BACF1FFF6AD300EBE0B7 /* TaskDtoTests.swift */; };
+		BE65BAD21FFF6E9000EBE0B7 /* FolderDtoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAD11FFF6E9000EBE0B7 /* FolderDtoTests.swift */; };
+		BE65BAD41FFF70E300EBE0B7 /* TaskDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAD31FFF70E300EBE0B7 /* TaskDaoTests.swift */; };
+		BE65BAD61FFF7AE700EBE0B7 /* FolderDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAD51FFF7AE700EBE0B7 /* FolderDaoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,12 @@
 		BE65BAC11FFE0C0D00EBE0B7 /* TaskDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDao.swift; sourceTree = "<group>"; };
 		BE65BAC31FFE24E300EBE0B7 /* FolderDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDto.swift; sourceTree = "<group>"; };
 		BE65BAC51FFE255400EBE0B7 /* FolderDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDao.swift; sourceTree = "<group>"; };
+		BE65BACB1FFF69A300EBE0B7 /* MocRealmFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocRealmFolder.swift; sourceTree = "<group>"; };
+		BE65BACD1FFF6A6B00EBE0B7 /* MocRealmTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocRealmTask.swift; sourceTree = "<group>"; };
+		BE65BACF1FFF6AD300EBE0B7 /* TaskDtoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDtoTests.swift; sourceTree = "<group>"; };
+		BE65BAD11FFF6E9000EBE0B7 /* FolderDtoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDtoTests.swift; sourceTree = "<group>"; };
+		BE65BAD31FFF70E300EBE0B7 /* TaskDaoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDaoTests.swift; sourceTree = "<group>"; };
+		BE65BAD51FFF7AE700EBE0B7 /* FolderDaoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDaoTests.swift; sourceTree = "<group>"; };
 		CCF96E37C979684CF6F4DAE3 /* Pods-skillUpTest_7_preTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skillUpTest_7_preTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-skillUpTest_7_preTests/Pods-skillUpTest_7_preTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB54B10A629015AA133F6681 /* Pods_skillUpTest_7_pre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skillUpTest_7_pre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -127,6 +139,8 @@
 		BE65BAA91FFE006400EBE0B7 /* skillUpTest_7_preTests */ = {
 			isa = PBXGroup;
 			children = (
+				BE65BACA1FFF698100EBE0B7 /* Moc */,
+				BE65BAC71FFF68DD00EBE0B7 /* Models */,
 				BE65BAAA1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift */,
 				BE65BAAC1FFE006400EBE0B7 /* Info.plist */,
 			);
@@ -199,6 +213,42 @@
 				BE65BAC11FFE0C0D00EBE0B7 /* TaskDao.swift */,
 			);
 			path = Task;
+			sourceTree = "<group>";
+		};
+		BE65BAC71FFF68DD00EBE0B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE65BAC91FFF68F200EBE0B7 /* Task */,
+				BE65BAC81FFF68E900EBE0B7 /* Folder */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BE65BAC81FFF68E900EBE0B7 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				BE65BAD11FFF6E9000EBE0B7 /* FolderDtoTests.swift */,
+				BE65BAD51FFF7AE700EBE0B7 /* FolderDaoTests.swift */,
+			);
+			path = Folder;
+			sourceTree = "<group>";
+		};
+		BE65BAC91FFF68F200EBE0B7 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				BE65BACF1FFF6AD300EBE0B7 /* TaskDtoTests.swift */,
+				BE65BAD31FFF70E300EBE0B7 /* TaskDaoTests.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		BE65BACA1FFF698100EBE0B7 /* Moc */ = {
+			isa = PBXGroup;
+			children = (
+				BE65BACB1FFF69A300EBE0B7 /* MocRealmFolder.swift */,
+				BE65BACD1FFF6A6B00EBE0B7 /* MocRealmTask.swift */,
+			);
+			path = Moc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,7 +485,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE65BACE1FFF6A6B00EBE0B7 /* MocRealmTask.swift in Sources */,
 				BE65BAAB1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift in Sources */,
+				BE65BAD01FFF6AD300EBE0B7 /* TaskDtoTests.swift in Sources */,
+				BE65BACC1FFF69A300EBE0B7 /* MocRealmFolder.swift in Sources */,
+				BE65BAD61FFF7AE700EBE0B7 /* FolderDaoTests.swift in Sources */,
+				BE65BAD21FFF6E9000EBE0B7 /* FolderDtoTests.swift in Sources */,
+				BE65BAD41FFF70E300EBE0B7 /* TaskDaoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ import RealmSwift
 final class FolderDto: Object {
     @objc dynamic var folderId = 0
     @objc dynamic var folderName = ""
-    @objc dynamic var updatedate = Date()
+    @objc dynamic var updateDate = Date()
     let tasks = List<TaskDto>()
     
     override static func primaryKey() -> String? {
