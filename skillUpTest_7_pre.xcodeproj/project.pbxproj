@@ -24,6 +24,10 @@
 		BE65BAD21FFF6E9000EBE0B7 /* FolderDtoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAD11FFF6E9000EBE0B7 /* FolderDtoTests.swift */; };
 		BE65BAD41FFF70E300EBE0B7 /* TaskDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAD31FFF70E300EBE0B7 /* TaskDaoTests.swift */; };
 		BE65BAD61FFF7AE700EBE0B7 /* FolderDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAD51FFF7AE700EBE0B7 /* FolderDaoTests.swift */; };
+		BE65BAD91FFF7DB400EBE0B7 /* FolderList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE65BAD81FFF7DB400EBE0B7 /* FolderList.storyboard */; };
+		BE65BADB1FFF7DC300EBE0B7 /* FolderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BADA1FFF7DC300EBE0B7 /* FolderListViewController.swift */; };
+		BE65BADE1FFF7E7500EBE0B7 /* FolderListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BADD1FFF7E7500EBE0B7 /* FolderListProvider.swift */; };
+		BE65BAE01FFF805B00EBE0B7 /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BADF1FFF805B00EBE0B7 /* FolderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		BE65BAD11FFF6E9000EBE0B7 /* FolderDtoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDtoTests.swift; sourceTree = "<group>"; };
 		BE65BAD31FFF70E300EBE0B7 /* TaskDaoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDaoTests.swift; sourceTree = "<group>"; };
 		BE65BAD51FFF7AE700EBE0B7 /* FolderDaoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDaoTests.swift; sourceTree = "<group>"; };
+		BE65BAD81FFF7DB400EBE0B7 /* FolderList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FolderList.storyboard; sourceTree = "<group>"; };
+		BE65BADA1FFF7DC300EBE0B7 /* FolderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewController.swift; sourceTree = "<group>"; };
+		BE65BADD1FFF7E7500EBE0B7 /* FolderListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListProvider.swift; sourceTree = "<group>"; };
+		BE65BADF1FFF805B00EBE0B7 /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
 		CCF96E37C979684CF6F4DAE3 /* Pods-skillUpTest_7_preTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-skillUpTest_7_preTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-skillUpTest_7_preTests/Pods-skillUpTest_7_preTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB54B10A629015AA133F6681 /* Pods_skillUpTest_7_pre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_skillUpTest_7_pre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +168,7 @@
 		BE65BAB61FFE00A700EBE0B7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE65BAD71FFF7D9900EBE0B7 /* FolderList */,
 				BE65BAB71FFE00B000EBE0B7 /* LaunchScreen */,
 			);
 			path = Controllers;
@@ -176,6 +185,7 @@
 		BE65BAB81FFE00C200EBE0B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE65BADC1FFF7E3200EBE0B7 /* Folder */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +259,24 @@
 				BE65BACD1FFF6A6B00EBE0B7 /* MocRealmTask.swift */,
 			);
 			path = Moc;
+			sourceTree = "<group>";
+		};
+		BE65BAD71FFF7D9900EBE0B7 /* FolderList */ = {
+			isa = PBXGroup;
+			children = (
+				BE65BAD81FFF7DB400EBE0B7 /* FolderList.storyboard */,
+				BE65BADA1FFF7DC300EBE0B7 /* FolderListViewController.swift */,
+			);
+			path = FolderList;
+			sourceTree = "<group>";
+		};
+		BE65BADC1FFF7E3200EBE0B7 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				BE65BADD1FFF7E7500EBE0B7 /* FolderListProvider.swift */,
+				BE65BADF1FFF805B00EBE0B7 /* FolderCell.swift */,
+			);
+			path = Folder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE65BAA01FFE006300EBE0B7 /* LaunchScreen.storyboard in Resources */,
+				BE65BAD91FFF7DB400EBE0B7 /* FolderList.storyboard in Resources */,
 				BE65BA9D1FFE006300EBE0B7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,9 +503,12 @@
 			files = (
 				BE65BAC61FFE255400EBE0B7 /* FolderDao.swift in Sources */,
 				BE65BABC1FFE015300EBE0B7 /* RealmDaoHelper.swift in Sources */,
+				BE65BAE01FFF805B00EBE0B7 /* FolderCell.swift in Sources */,
 				BE65BA961FFE006300EBE0B7 /* AppDelegate.swift in Sources */,
 				BE65BAC01FFE0BB300EBE0B7 /* TaskDto.swift in Sources */,
+				BE65BADB1FFF7DC300EBE0B7 /* FolderListViewController.swift in Sources */,
 				BE65BAC21FFE0C0D00EBE0B7 /* TaskDao.swift in Sources */,
+				BE65BADE1FFF7E7500EBE0B7 /* FolderListProvider.swift in Sources */,
 				BE65BAC41FFE24E300EBE0B7 /* FolderDto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
