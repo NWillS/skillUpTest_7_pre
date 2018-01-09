@@ -36,6 +36,7 @@ final class FolderDao{
         guard let folder = FolderDao.daoHelper.findFirst(key: folderId as AnyObject) else{
             return
         }
+        deleteAllTasksIn(folderId: folderId)
         FolderDao.daoHelper.delete(object: folder)
     }
 //    フォルダの全取得
@@ -45,6 +46,7 @@ final class FolderDao{
     }
 //    フォルダの全削除
     static func deleteAllFolders(){
+        TaskDao.deleteAllTasks()
         FolderDao.daoHelper.deleteAll()
     }
     

@@ -28,6 +28,12 @@ extension FolderListProvider:UITableViewDataSource{
         
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let folderId = folderList[indexPath.row].folderId
+        FolderDao.deleteFolder(folderId: folderId)
+        folderList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)],
+                             with: .fade)
+    }
     
 }

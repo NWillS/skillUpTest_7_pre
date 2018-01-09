@@ -83,7 +83,11 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="pzd-Pf-Voa"/>
-                                    <barButtonItem title="新規フォルダ" id="fwP-hn-S7q"/>
+                                    <barButtonItem title="新規フォルダ" id="fwP-hn-S7q">
+                                        <connections>
+                                            <action selector="tappedRightBarButtonItem:" destination="T0b-Rh-e45" id="CcO-9r-nNh"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

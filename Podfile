@@ -3,6 +3,7 @@
 def install_pods
     pod 'RealmSwift'
     pod "STV-Extensions"
+    pod 'Alertift'
 end
 target 'skillUpTest_7_pre' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
