@@ -32,9 +32,10 @@ class TaskDaoTests: XCTestCase {
         let taskTitle = MocRealmTask.dummyTitle[0]
         
 //        exercise
-        TaskDao.addTask(title: taskTitle)
+        let result = TaskDao.addTask(title: taskTitle)
         
 //        verify
+        XCTAssertEqual(result, 1)
         XCTAssertEqual(moc.mocRealmTask().findAll().count, 1)
         XCTAssertEqual(moc.mocRealmTask().findFirst(key: 1 as AnyObject)?.taskTitle, MocRealmTask.dummyTitle[0])
     }

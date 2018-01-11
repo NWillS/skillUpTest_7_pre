@@ -25,10 +25,14 @@ class FolderListViewController: UIViewController {
         folderTableView.delegate = self
         folderTableView.allowsSelectionDuringEditing = true
         
-        reloadFolderList()
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        reloadFolderList()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -88,7 +92,35 @@ class FolderListViewController: UIViewController {
 }
 extension FolderListViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if(folderTableView.isEditing){
+            let folder = dataSource.folderList[indexPath.row]
+            Alertift.alert(title: folder.folderName, message: "このフォルダの新しい名前を入力してください。")
+                .textField{ textField in
+                    textField.text = folder.folderName
+                }
+                .action(.cancel("キャンセル"))
+                .action(.default("保存")) { _, _, textFields in
+                    let name = textFields?.first?.text ?? ""
+                    if (name == "" || name == folder.folderName){
+                        return
+                    }
+                    let updateFolder = FolderDto()
+                    updateFolder.folderId = folder.folderId
+                    updateFolder.folderName = name
+                    updateFolder.tasks.append(objectsIn: folder.tasks)
+                    
+                    FolderDao.updateFolder(folder: updateFolder)
+                    self.reloadFolderList()
+                }
+                .show()
+        }else{
+            let folder = dataSource.folderList[indexPath.row]
+            let taskListSB = UIStoryboard(name: "TaskList", bundle: nil)
+            let taskListVC = taskListSB.instantiateInitialViewController() as! TaskListViewController
+            
+            taskListVC.folder = folder
+            navigationController?.pushViewController(taskListVC, animated: true)
+        }
     }
 }
 

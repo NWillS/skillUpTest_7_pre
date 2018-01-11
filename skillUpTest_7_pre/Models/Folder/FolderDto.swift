@@ -13,10 +13,13 @@ final class FolderDto: Object {
     @objc dynamic var folderId = 0
     @objc dynamic var folderName = ""
     @objc dynamic var updateDate = Date()
-    let tasks = List<TaskDto>()
+    let tasks = List<TaskDto>() 
     
     override static func primaryKey() -> String? {
         return "folderId"
+    }
+    func getListCount() -> Int{
+        return tasks.count
     }
 }
 

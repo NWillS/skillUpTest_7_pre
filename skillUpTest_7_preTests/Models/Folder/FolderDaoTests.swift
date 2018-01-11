@@ -115,5 +115,4 @@ class FolderDaoTests: XCTestCase {
 //        verify
         XCTAssertEqual(moc.mocRealmFolder().findAll().count, 0)
     }
-    
 }

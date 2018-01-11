@@ -14,6 +14,9 @@ class FolderListProvider: NSObject {
     func set(folderList:[FolderDto]){
         self.folderList = folderList
     }
+    func getFolderId(indexpath:IndexPath) -> Int{
+        return folderList[indexpath.row].folderId
+    }
 }
 extension FolderListProvider:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,7 +27,7 @@ extension FolderListProvider:UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "folderCell")as! FolderCell
         
         cell.NameLabel.text = folderList[indexPath.row].folderName
-        cell.countLabel.text = "\(folderList[indexPath.row].tasks.count)"
+        cell.countLabel.text = "\(folderList[indexPath.row].getListCount())"
         
         return cell
     }

@@ -40,5 +40,30 @@ class FolderDtoTests: XCTestCase {
         XCTAssertEqual(folder.updateDate, updateDate)
         
     }
-    
+    func testGetTaskCount(){
+//        Mark:taskの個数
+//        setup
+        let folderId = 1
+        let folderName = "name"
+        let updateDate = Date()
+        
+        let folder = FolderDto()
+        folder.folderId = folderId
+        folder.folderName = folderName
+        folder.updateDate = updateDate
+        for i in 0...2{
+            let task = TaskDto()
+            task.taskId = 1
+            task.taskTitle = MocRealmTask.dummyTitle[i]
+            
+            folder.tasks.append(task)
+        }
+        
+//        exercise
+        let result = folder.getListCount()
+        
+//        verify
+        XCTAssertEqual(result, 3)
+        
+    }
 }

@@ -12,17 +12,27 @@ final class TaskDao{
     static let daoHelper = RealmDaoHelper<TaskDto>()
     
 //    Task追加
-    static func addTask(title:String){
+    static func addTask(title:String) -> Int{
         let task = TaskDto()
         task.taskId = TaskDao.daoHelper.newId()!
         task.taskTitle = title
         task.updateDate = Date()
         
         TaskDao.daoHelper.add(object: task)
+        
+        return task.taskId
     }
 //    Task更新
     static func updateTask(task:TaskDto){
-        TaskDao.daoHelper.update(object: task)
+        guard let target = daoHelper.findFirst(key: task.taskId as AnyObject) else {
+            return
+        }
+        
+        let newTask = TaskDto()
+        newTask.taskId = target.taskId
+        newTask.taskTitle = task.taskTitle
+        newTask.updateDate = Date()
+        daoHelper.update(object: newTask)
     }
 //    Task取得
     static func getTask(taskId:Int)-> TaskDto?{

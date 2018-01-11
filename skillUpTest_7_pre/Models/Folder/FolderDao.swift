@@ -22,7 +22,16 @@ final class FolderDao{
     }
 //    フォルダの更新
     static func updateFolder(folder: FolderDto){
-        FolderDao.daoHelper.update(object: folder)
+        guard let target = daoHelper.findFirst(key: folder.folderId as AnyObject) else {
+            return
+        }
+        
+        let newFolder = FolderDto()
+        newFolder.folderId = target.folderId
+        newFolder.folderName = folder.folderName
+        newFolder.updateDate = Date()
+        newFolder.tasks.append(objectsIn: folder.tasks)
+        daoHelper.update(object: newFolder)
     }
 //    フォルダの取得
     static func getFolder(folderId:Int) -> FolderDto?{
@@ -36,7 +45,9 @@ final class FolderDao{
         guard let folder = FolderDao.daoHelper.findFirst(key: folderId as AnyObject) else{
             return
         }
-        deleteAllTasksIn(folderId: folderId)
+        folder.tasks.forEach {
+            TaskDao.deleteTask(taskId: $0.taskId)
+        }
         FolderDao.daoHelper.delete(object: folder)
     }
 //    フォルダの全取得
@@ -70,4 +81,5 @@ final class FolderDao{
             FolderDao.updateFolder(folder: folder)
         }
     }
+
 }
