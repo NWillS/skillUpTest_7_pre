@@ -12,6 +12,7 @@ import Alertift
 class TaskListViewController: UIViewController {
     
     let dataSource = TaskListProvider()
+    let alert = AlertHelper()
     
     var folder:FolderDto!
     @IBOutlet weak var taskTableView: UITableView!
@@ -24,6 +25,8 @@ class TaskListViewController: UIViewController {
         taskTableView.delegate = self
         taskTableView.allowsSelectionDuringEditing = true
         
+        alert.delegate = self
+        
         navigationItem.rightBarButtonItem = editButtonItem
         
         title = folder.folderName
@@ -31,7 +34,7 @@ class TaskListViewController: UIViewController {
          reloadTaskList()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -48,25 +51,10 @@ class TaskListViewController: UIViewController {
     @IBAction func tappedRightBarButtonItem(_ sender: UIBarButtonItem) {
         if(taskTableView.isEditing){
             //            すべて削除
-            showActionSheet()
+            alert.delete()
         }else{
             //            フォルダ追加
-            var name:String = ""
-            Alertift.alert(title: "", message: "このタスクの名前を入力してください。")
-                .textField{ textField in
-                    textField.placeholder = "このタスクの名前を入力してください。"
-                }
-                .action(.cancel("キャンセル"))
-                .action(.default("保存")) { _, _, textFields in
-                    name = textFields?.first?.text ?? ""
-                    
-                    if(name == ""){
-                        return
-                    }
-                    self.addTask(name: name)
-                    self.reloadTaskList()
-                }
-                .show(on: self)
+            alert.showAlert(title: "", message: "このタスクの名前を入力してください。", type: .add)
         }
     }
     func addTask(name:String){
@@ -76,23 +64,6 @@ class TaskListViewController: UIViewController {
             FolderDao.updateFolder(folder: folder)
             
         }
-    }
-    func showActionSheet() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let deleteAction = UIAlertAction(title: "すべて削除", style: .destructive) { [weak self] (action) in
-            
-            guard let `self` = self else { return }
-            FolderDao.deleteAllTasksIn(folderId: self.folder.folderId)
-            self.reloadTaskList()
-            self.setEditing(false, animated: true)
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
-        
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
     }
 
     func reloadTaskList() {
@@ -114,24 +85,29 @@ extension TaskListViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(taskTableView.isEditing){
             let task = FolderDao.getAllTaskIn(folderId: folder.folderId)[indexPath.row]
-            Alertift.alert(title: task.taskTitle, message: "このタスクの新しい名前を入力してください。")
-            .textField{ textField in
-                    textField.text = task.taskTitle
-            }
-            .action(.cancel("キャンセル"))
-            .action(.default("保存")) { _, _, textFields in
-                let name = textFields?.first?.text ?? ""
-                if (name == "" || name == task.taskTitle){
-                    return
-                }
-                let updateTask = TaskDto()
-                updateTask.taskId = task.taskId
-                updateTask.taskTitle = name
-                
-                TaskDao.updateTask(task: updateTask)
-                self.reloadTaskList()
-            }
-            .show()
+            alert.showAlert(title: task.taskTitle, message: "このタスクの新しい名前を入力してください。", type: .update(index: indexPath.row))
         }
+    }
+}
+extension TaskListViewController:AlertHelperDelegate{
+    func receivedName(name: String,type:AlertHelperType) {
+        switch type {
+        case .add:
+            addTask(name: name)
+        case .update(let index):
+            let task = FolderDao.getAllTaskIn(folderId: folder.folderId)[index]
+            let updateTask = TaskDto()
+            updateTask.taskId = task.taskId
+            updateTask.taskTitle = name
+            
+            TaskDao.updateTask(task: updateTask)
+        }
+        
+        reloadTaskList()
+    }
+    func deleteAll() {
+        FolderDao.deleteAllTasksIn(folderId: self.folder.folderId)
+        self.reloadTaskList()
+        self.setEditing(false, animated: true)
     }
 }

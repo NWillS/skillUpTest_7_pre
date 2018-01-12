@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Alertift
 
 class FolderListViewController: UIViewController {
 
     let dataSource = FolderListProvider()
+    let alert = AlertHelper()
     
     @IBOutlet weak var folderTableView: UITableView!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
@@ -24,6 +24,8 @@ class FolderListViewController: UIViewController {
         folderTableView.dataSource = dataSource
         folderTableView.delegate = self
         folderTableView.allowsSelectionDuringEditing = true
+        
+        alert.delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -49,41 +51,11 @@ class FolderListViewController: UIViewController {
     @IBAction func tappedRightBarButtonItem(_ sender: UIBarButtonItem) {
         if(folderTableView.isEditing){
 //            すべて削除
-            showActionSheet()
+            alert.delete()
         }else{
 //            フォルダ追加
-            Alertift.alert(title: "", message: "このフォルダの名前を入力してください。")
-                .textField{ textField in
-                    textField.placeholder = "このフォルダの名前を入力してください。"
-                }
-                .action(.cancel("キャンセル"))
-                .action(.default("保存")) { _, _, textFields in
-                    let name = textFields?.first?.text ?? ""
-                    if (name == ""){
-                        return
-                    }
-                    FolderDao.addFolder(name: name)
-                    self.reloadFolderList()
-                }
-                .show(on: self)
+            alert.showAlert(title: "", message: "このフォルダの名前を入力してください。",type: .add)
         }
-    }
-    func showActionSheet() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let deleteAction = UIAlertAction(title: "すべて削除", style: .destructive) { [weak self] (action) in
-            
-            guard let `self` = self else { return }
-            FolderDao.deleteAllFolders()
-            self.reloadFolderList()
-            self.setEditing(false, animated: true)
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
-        
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
     }
     func reloadFolderList() {
         dataSource.set(folderList: FolderDao.getAllFolders())
@@ -94,25 +66,7 @@ extension FolderListViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(folderTableView.isEditing){
             let folder = dataSource.folderList[indexPath.row]
-            Alertift.alert(title: folder.folderName, message: "このフォルダの新しい名前を入力してください。")
-                .textField{ textField in
-                    textField.text = folder.folderName
-                }
-                .action(.cancel("キャンセル"))
-                .action(.default("保存")) { _, _, textFields in
-                    let name = textFields?.first?.text ?? ""
-                    if (name == "" || name == folder.folderName){
-                        return
-                    }
-                    let updateFolder = FolderDto()
-                    updateFolder.folderId = folder.folderId
-                    updateFolder.folderName = name
-                    updateFolder.tasks.append(objectsIn: folder.tasks)
-                    
-                    FolderDao.updateFolder(folder: updateFolder)
-                    self.reloadFolderList()
-                }
-                .show()
+            alert.showAlert(title: folder.folderName, message: "このフォルダの新しい名前を入力してください。", type: .update(index: indexPath.row))
         }else{
             let folder = dataSource.folderList[indexPath.row]
             let taskListSB = UIStoryboard(name: "TaskList", bundle: nil)
@@ -123,4 +77,26 @@ extension FolderListViewController:UITableViewDelegate{
         }
     }
 }
-
+extension FolderListViewController:AlertHelperDelegate{
+    func receivedName(name: String,type:AlertHelperType) {
+        switch type {
+        case .add:
+            FolderDao.addFolder(name: name)
+        case .update(let index):
+            let folder = dataSource.folderList[index]
+            let updateFolder = FolderDto()
+            updateFolder.folderId = folder.folderId
+            updateFolder.folderName = name
+            updateFolder.tasks.append(objectsIn: folder.tasks)
+            
+            FolderDao.updateFolder(folder: updateFolder)
+        }
+        
+        reloadFolderList()
+    }
+    func deleteAll() {
+        FolderDao.deleteAllFolders()
+        reloadFolderList()
+        setEditing(false, animated: true)
+    }
+}

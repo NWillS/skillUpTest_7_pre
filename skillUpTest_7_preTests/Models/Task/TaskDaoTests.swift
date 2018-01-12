@@ -22,6 +22,7 @@ class TaskDaoTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        moc.mocRealmTask().deleteAll()
     }
     
     //    Task追加
@@ -43,7 +44,7 @@ class TaskDaoTests: XCTestCase {
     //    Task更新
     func testUpdateTask(){
 //        setup
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
         XCTAssertEqual(moc.mocRealmTask().findAll().count, 1)
         XCTAssertEqual(moc.mocRealmTask().findFirst(key: 1 as AnyObject)?.taskTitle, MocRealmTask.dummyTitle[0])
         
@@ -63,7 +64,7 @@ class TaskDaoTests: XCTestCase {
     //    Task取得
     func testGetTask(){
 //        setup
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
         
 //        exercise
         guard let gotTask = TaskDao.getTask(taskId: 1) else{
@@ -76,7 +77,7 @@ class TaskDaoTests: XCTestCase {
     //    Task削除
     func testDeleteTask(){
 //        setup
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
         XCTAssertEqual(moc.mocRealmTask().findAll().count, 1)
         XCTAssertEqual(moc.mocRealmTask().findFirst(key: 1 as AnyObject)?.taskTitle, MocRealmTask.dummyTitle[0])
         
@@ -89,9 +90,9 @@ class TaskDaoTests: XCTestCase {
     //    Task全取得
     func testGetAllTasks(){
 //        setup
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[1])
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[2])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[1])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[2])
         
 //        exercise
         let results = TaskDao.getAllTasks()
@@ -104,9 +105,9 @@ class TaskDaoTests: XCTestCase {
     //    Task全削除
     func testDeleteAllTasks(){
 //        setup
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[1])
-        TaskDao.addTask(title: MocRealmTask.dummyTitle[2])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[0])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[1])
+        _ = TaskDao.addTask(title: MocRealmTask.dummyTitle[2])
         
         XCTAssertEqual(moc.mocRealmTask().findAll().count, 3)
         
