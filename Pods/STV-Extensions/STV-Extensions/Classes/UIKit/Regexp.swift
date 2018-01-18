@@ -19,7 +19,7 @@ public func =~(lhs: String, rhs: String) -> Bool {
     
     return regex.numberOfMatches(in: lhs,
                                  options: NSRegularExpression.MatchingOptions(),
-                                 range: NSRange(location: 0, length: lhs.characters.count)) > 0
+                                 range: NSRange(location: 0, length: lhs.count)) > 0
 }
 
 public func !~(lhs: String, rhs: String) -> Bool {

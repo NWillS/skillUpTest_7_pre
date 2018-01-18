@@ -6,17 +6,17 @@
 //  Copyright © 2018年 Seidi Nakamura. All rights reserved.
 //
 
-import UIKit
 import Alertift
+import UIKit
 
 class TaskListViewController: UIViewController {
     
     let dataSource = TaskListProvider()
     let alert = AlertHelper()
     
-    var folder:FolderDto!
-    @IBOutlet weak var taskTableView: UITableView!
-    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    var folder: FolderDto = FolderDto()
+    @IBOutlet weak private var taskTableView: UITableView!
+    @IBOutlet weak private var rightBarButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,24 +42,26 @@ class TaskListViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         taskTableView.isEditing = !taskTableView.isEditing
-        if(taskTableView.isEditing){
+        if taskTableView.isEditing {
             rightBarButtonItem.title = "すべて削除"
-        }else{
+        } else {
             rightBarButtonItem.title = "タスク追加"
         }
     }
     @IBAction func tappedRightBarButtonItem(_ sender: UIBarButtonItem) {
-        if(taskTableView.isEditing){
+        if taskTableView.isEditing {
             //            すべて削除
             alert.delete()
-        }else{
+        } else {
             //            フォルダ追加
             alert.showAlert(title: "", message: "このタスクの名前を入力してください。", type: .add)
         }
     }
-    func addTask(name:String){
-        let taskId = TaskDao.addTask(title: name)
-        if let newTask:TaskDto = TaskDao.getTask(taskId: taskId){
+    func addTask(name: String) {
+        guard let taskId = TaskDao.addTask(title: name) else {
+            return
+        }
+        if let newTask: TaskDto = TaskDao.getTask(taskId: taskId) {
             folder.tasks.append(newTask)
             FolderDao.updateFolder(folder: folder)
             
@@ -81,16 +83,18 @@ class TaskListViewController: UIViewController {
     */
 
 }
-extension TaskListViewController:UITableViewDelegate{
+extension TaskListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(taskTableView.isEditing){
+        if taskTableView.isEditing {
             let task = FolderDao.getAllTaskIn(folderId: folder.folderId)[indexPath.row]
-            alert.showAlert(title: task.taskTitle, message: "このタスクの新しい名前を入力してください。", type: .update(index: indexPath.row))
+            alert.showAlert(title: task.taskTitle,
+                            message: "このタスクの新しい名前を入力してください。",
+                            type: .update(index: indexPath.row))
         }
     }
 }
-extension TaskListViewController:AlertHelperDelegate{
-    func receivedName(name: String,type:AlertHelperType) {
+extension TaskListViewController: AlertHelperDelegate {
+    func receivedName(name: String, type: AlertHelperType) {
         switch type {
         case .add:
             addTask(name: name)

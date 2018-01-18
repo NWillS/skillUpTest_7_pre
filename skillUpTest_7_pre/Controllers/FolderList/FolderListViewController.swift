@@ -13,8 +13,8 @@ class FolderListViewController: UIViewController {
     let dataSource = FolderListProvider()
     let alert = AlertHelper()
     
-    @IBOutlet weak var folderTableView: UITableView!
-    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak private var folderTableView: UITableView!
+    @IBOutlet weak private var rightBarButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,19 +42,19 @@ class FolderListViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         folderTableView.isEditing = !folderTableView.isEditing
-        if(folderTableView.isEditing){
+        if folderTableView.isEditing {
             rightBarButtonItem.title = "すべて削除"
-        }else{
+        } else {
             rightBarButtonItem.title = "新規フォルダ"
         }
     }
     @IBAction func tappedRightBarButtonItem(_ sender: UIBarButtonItem) {
-        if(folderTableView.isEditing){
+        if folderTableView.isEditing {
 //            すべて削除
             alert.delete()
-        }else{
+        } else {
 //            フォルダ追加
-            alert.showAlert(title: "", message: "このフォルダの名前を入力してください。",type: .add)
+            alert.showAlert(title: "", message: "このフォルダの名前を入力してください。", type: .add)
         }
     }
     func reloadFolderList() {
@@ -62,23 +62,27 @@ class FolderListViewController: UIViewController {
         folderTableView.reloadData()
     }
 }
-extension FolderListViewController:UITableViewDelegate{
+extension FolderListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(folderTableView.isEditing){
+        if folderTableView.isEditing {
             let folder = dataSource.folderList[indexPath.row]
-            alert.showAlert(title: folder.folderName, message: "このフォルダの新しい名前を入力してください。", type: .update(index: indexPath.row))
-        }else{
+            alert.showAlert(title: folder.folderName,
+                            message: "このフォルダの新しい名前を入力してください。",
+                            type: .update(index: indexPath.row))
+        } else {
             let folder = dataSource.folderList[indexPath.row]
             let taskListSB = UIStoryboard(name: "TaskList", bundle: nil)
-            let taskListVC = taskListSB.instantiateInitialViewController() as! TaskListViewController
+            guard let taskListVC = taskListSB.instantiateInitialViewController() as? TaskListViewController else {
+                return
+            }
             
             taskListVC.folder = folder
             navigationController?.pushViewController(taskListVC, animated: true)
         }
     }
 }
-extension FolderListViewController:AlertHelperDelegate{
-    func receivedName(name: String,type:AlertHelperType) {
+extension FolderListViewController: AlertHelperDelegate {
+    func receivedName(name: String, type: AlertHelperType) {
         switch type {
         case .add:
             FolderDao.addFolder(name: name)

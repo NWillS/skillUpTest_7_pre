@@ -7,7 +7,7 @@
 //
 import RealmSwift
 
-final class RealmDaoHelper <T : RealmSwift.Object> {
+final class RealmDaoHelper <T: RealmSwift.Object> {
     let realm: Realm
     
     init() {

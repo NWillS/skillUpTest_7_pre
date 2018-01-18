@@ -12,7 +12,6 @@
 		BE65BA961FFE006300EBE0B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BA951FFE006300EBE0B7 /* AppDelegate.swift */; };
 		BE65BA9D1FFE006300EBE0B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE65BA9C1FFE006300EBE0B7 /* Assets.xcassets */; };
 		BE65BAA01FFE006300EBE0B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE65BA9E1FFE006300EBE0B7 /* LaunchScreen.storyboard */; };
-		BE65BAAB1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAAA1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift */; };
 		BE65BABC1FFE015300EBE0B7 /* RealmDaoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BABB1FFE015300EBE0B7 /* RealmDaoHelper.swift */; };
 		BE65BAC01FFE0BB300EBE0B7 /* TaskDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BABF1FFE0BB300EBE0B7 /* TaskDto.swift */; };
 		BE65BAC21FFE0C0D00EBE0B7 /* TaskDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BAC11FFE0C0D00EBE0B7 /* TaskDao.swift */; };
@@ -28,6 +27,7 @@
 		BE65BADB1FFF7DC300EBE0B7 /* FolderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BADA1FFF7DC300EBE0B7 /* FolderListViewController.swift */; };
 		BE65BADE1FFF7E7500EBE0B7 /* FolderListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BADD1FFF7E7500EBE0B7 /* FolderListProvider.swift */; };
 		BE65BAE01FFF805B00EBE0B7 /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE65BADF1FFF805B00EBE0B7 /* FolderCell.swift */; };
+		BE6649DA201114F100D63848 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BE6649D9201114F100D63848 /* .swiftlint.yml */; };
 		BE9D4E0020045FA400B58DF0 /* TaskList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9D4DFF20045FA400B58DF0 /* TaskList.storyboard */; };
 		BE9D4E0220045FC400B58DF0 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9D4E0120045FC400B58DF0 /* TaskListViewController.swift */; };
 		BE9D4E052004656700B58DF0 /* TaskListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9D4E042004656700B58DF0 /* TaskListProvider.swift */; };
@@ -56,7 +56,6 @@
 		BE65BA9F1FFE006300EBE0B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE65BAA11FFE006300EBE0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE65BAA61FFE006400EBE0B7 /* skillUpTest_7_preTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = skillUpTest_7_preTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE65BAAA1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = skillUpTest_7_preTests.swift; sourceTree = "<group>"; };
 		BE65BAAC1FFE006400EBE0B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE65BABB1FFE015300EBE0B7 /* RealmDaoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDaoHelper.swift; sourceTree = "<group>"; };
 		BE65BABF1FFE0BB300EBE0B7 /* TaskDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDto.swift; sourceTree = "<group>"; };
@@ -73,6 +72,7 @@
 		BE65BADA1FFF7DC300EBE0B7 /* FolderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListViewController.swift; sourceTree = "<group>"; };
 		BE65BADD1FFF7E7500EBE0B7 /* FolderListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderListProvider.swift; sourceTree = "<group>"; };
 		BE65BADF1FFF805B00EBE0B7 /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
+		BE6649D9201114F100D63848 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BE9D4DFF20045FA400B58DF0 /* TaskList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskList.storyboard; sourceTree = "<group>"; };
 		BE9D4E0120045FC400B58DF0 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		BE9D4E042004656700B58DF0 /* TaskListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListProvider.swift; sourceTree = "<group>"; };
@@ -125,6 +125,7 @@
 		BE65BA891FFE006300EBE0B7 = {
 			isa = PBXGroup;
 			children = (
+				BE6649D9201114F100D63848 /* .swiftlint.yml */,
 				BE65BA941FFE006300EBE0B7 /* skillUpTest_7_pre */,
 				BE65BAA91FFE006400EBE0B7 /* skillUpTest_7_preTests */,
 				BE65BA931FFE006300EBE0B7 /* Products */,
@@ -159,7 +160,6 @@
 			children = (
 				BE65BACA1FFF698100EBE0B7 /* Moc */,
 				BE65BAC71FFF68DD00EBE0B7 /* Models */,
-				BE65BAAA1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift */,
 				BE65BAAC1FFE006400EBE0B7 /* Info.plist */,
 			);
 			path = skillUpTest_7_preTests;
@@ -331,6 +331,7 @@
 				BE65BA901FFE006300EBE0B7 /* Resources */,
 				90DCCD96F7D8F46EBC113F4E /* [CP] Embed Pods Frameworks */,
 				28B8F3E846AE66D2884BB9E6 /* [CP] Copy Pods Resources */,
+				BE6649DB2011152700D63848 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -407,6 +408,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6649DA201114F100D63848 /* .swiftlint.yml in Resources */,
 				BE65BAA01FFE006300EBE0B7 /* LaunchScreen.storyboard in Resources */,
 				BE9D4E0020045FA400B58DF0 /* TaskList.storyboard in Resources */,
 				BE65BAD91FFF7DB400EBE0B7 /* FolderList.storyboard in Resources */,
@@ -538,6 +540,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BE6649DB2011152700D63848 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -566,7 +581,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE65BACE1FFF6A6B00EBE0B7 /* MocRealmTask.swift in Sources */,
-				BE65BAAB1FFE006400EBE0B7 /* skillUpTest_7_preTests.swift in Sources */,
 				BE65BAD01FFF6AD300EBE0B7 /* TaskDtoTests.swift in Sources */,
 				BE65BACC1FFF69A300EBE0B7 /* MocRealmFolder.swift in Sources */,
 				BE65BAD61FFF7AE700EBE0B7 /* FolderDaoTests.swift in Sources */,

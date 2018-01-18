@@ -6,8 +6,8 @@
 //  Copyright © 2018年 Seidi Nakamura. All rights reserved.
 //
 
-import XCTest
 @testable import skillUpTest_7_pre
+import XCTest
 
 class TaskDtoTests: XCTestCase {
     
@@ -20,8 +20,8 @@ class TaskDtoTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    func testTaskDto(){
-//        MARK:TaskDtoに値セット
+    func testTaskDto() {
+        // MARK: - TaskDtoに値セット
 //        setup
         let taskId = 1
         let taskTitle = "title"
@@ -39,7 +39,7 @@ class TaskDtoTests: XCTestCase {
         XCTAssertEqual(task.updateDate, updateDate)
     }
     func testPrimaryKey() {
-//        MARK: PrimaryKeyを設定
+        // MARK: - PrimaryKeyを設定
 //        exercise
         let primaryKey = TaskDto.primaryKey()
         

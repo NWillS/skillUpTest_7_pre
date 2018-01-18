@@ -18,8 +18,7 @@ final class FolderDto: Object {
     override static func primaryKey() -> String? {
         return "folderId"
     }
-    func getListCount() -> Int{
+    func getListCount() -> Int {
         return tasks.count
     }
 }
-

@@ -9,8 +9,8 @@
 import UIKit
 
 class FolderCell: UITableViewCell {
-    @IBOutlet weak var NameLabel: UILabel!
-    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak private var nameLabel: UILabel!
+    @IBOutlet weak private var countLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +22,10 @@ class FolderCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    func setNameLabelText(text: String) {
+        nameLabel.text = text
+    }
+    func setCountLabelText(count: Int) {
+        nameLabel.text = "\(count)"
+    }
 }

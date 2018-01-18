@@ -73,8 +73,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="NameLabel" destination="Vbv-YZ-6DO" id="yPb-rv-owU"/>
                                             <outlet property="countLabel" destination="NyR-pC-MVi" id="IbS-35-aOO"/>
+                                            <outlet property="nameLabel" destination="Vbv-YZ-6DO" id="riS-Wx-XfT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class TaskDto: Object{
+final class TaskDto: Object {
     @objc dynamic var taskId = 0
     @objc dynamic var taskTitle = ""
     @objc dynamic var updateDate = Date()

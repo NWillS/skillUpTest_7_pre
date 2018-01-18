@@ -1,10 +1,10 @@
 PODS:
   - Alertift (3.1)
-  - Realm (3.0.2):
-    - Realm/Headers (= 3.0.2)
-  - Realm/Headers (3.0.2)
-  - RealmSwift (3.0.2):
-    - Realm (= 3.0.2)
+  - Realm (3.1.0):
+    - Realm/Headers (= 3.1.0)
+  - Realm/Headers (3.1.0)
+  - RealmSwift (3.1.0):
+    - Realm (= 3.1.0)
   - STV-Extensions (0.1.9)
 
 DEPENDENCIES:
@@ -14,8 +14,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alertift: 103e77f2e9023b80c91ce2d53d4670ec6fa7dcfd
-  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
-  RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
+  Realm: 09513d7c054678d65cd02ce09871f805b0d758ac
+  RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
   STV-Extensions: 48b4788afd374c6940a20f9eea6b1b9ebd40fe1c
 
 PODFILE CHECKSUM: 6bbc31ca509041591b39ca1f91fbcf81323a93fd

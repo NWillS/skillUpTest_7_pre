@@ -9,8 +9,8 @@
 import UIKit
 
 class TaskCell: UITableViewCell {
-    @IBOutlet weak var taskTitle: UILabel!
-    @IBOutlet weak var updateDate: UILabel!
+    @IBOutlet weak private var taskTitle: UILabel!
+    @IBOutlet weak private var updateDate: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +21,12 @@ class TaskCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func setTaskTitleText(text: String) {
+        taskTitle.text = text
+    }
+    func setUpdateDateText(date: String) {
+        updateDate.text = date
     }
 
 }

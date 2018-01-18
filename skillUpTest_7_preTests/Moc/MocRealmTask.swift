@@ -6,13 +6,13 @@
 //  Copyright © 2018年 Seidi Nakamura. All rights reserved.
 //
 
-import XCTest
 @testable import skillUpTest_7_pre
+import XCTest
 
 final class MocRealmTask: XCTestCase {
     
     func mocRealmTask() -> RealmDaoHelper<TaskDto> {
-        return RealmDaoHelper<TaskDto>.init()
+        return RealmDaoHelper<TaskDto>()
     }
     
     // MARK: - テスト用テキスト

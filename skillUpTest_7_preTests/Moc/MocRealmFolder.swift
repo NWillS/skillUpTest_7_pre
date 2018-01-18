@@ -6,13 +6,13 @@
 //  Copyright © 2018年 Seidi Nakamura. All rights reserved.
 //
 
-import XCTest
 @testable import skillUpTest_7_pre
+import XCTest
 
 final class MocRealmFolder: XCTestCase {
     
     func mocRealmFolder() -> RealmDaoHelper<FolderDto> {
-        return RealmDaoHelper<FolderDto>.init()
+        return RealmDaoHelper<FolderDto>()
     }
     
     // MARK: - テスト用テキスト

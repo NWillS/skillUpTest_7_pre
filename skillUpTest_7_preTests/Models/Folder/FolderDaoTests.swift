@@ -6,8 +6,8 @@
 //  Copyright © 2018年 Seidi Nakamura. All rights reserved.
 //
 
-import XCTest
 @testable import skillUpTest_7_pre
+import XCTest
 
 class FolderDaoTests: XCTestCase {
     var moc = MocRealmFolder()
@@ -26,7 +26,7 @@ class FolderDaoTests: XCTestCase {
     }
     
     //    Folder追加
-    func testAddFolder(){
+    func testAddFolder() {
 //        setup
         XCTAssertEqual(moc.mocRealmFolder().findAll().count, 0)
         
@@ -41,7 +41,7 @@ class FolderDaoTests: XCTestCase {
     }
     
     //    Folder更新
-    func testUpdateFolder(){
+    func testUpdateFolder() {
 //        setup
         FolderDao.addFolder(name: MocRealmFolder.dummyName[0])
         XCTAssertEqual(moc.mocRealmFolder().findAll().count, 1)
@@ -50,7 +50,10 @@ class FolderDaoTests: XCTestCase {
         let savedFolder = moc.mocRealmFolder().findFirst()
         
         let updateFolder = FolderDto()
-        updateFolder.folderId = (savedFolder?.folderId)!
+        guard let folderId = savedFolder?.folderId else {
+            return
+        }
+        updateFolder.folderId = folderId
         updateFolder.folderName = MocRealmFolder.dummyName[1]
         
 //        exercise
@@ -61,12 +64,12 @@ class FolderDaoTests: XCTestCase {
         XCTAssertEqual(moc.mocRealmFolder().findFirst(key: 1 as AnyObject)?.folderName, MocRealmFolder.dummyName[1])
     }
     //    Folder取得
-    func testGetFolder(){
+    func testGetFolder() {
 //        setup
         FolderDao.addFolder(name: MocRealmFolder.dummyName[0])
         
 //        exercise
-        guard let gotFolder = FolderDao.getFolder(folderId: 1) else{
+        guard let gotFolder = FolderDao.getFolder(folderId: 1) else {
             return
         }
         
@@ -74,7 +77,7 @@ class FolderDaoTests: XCTestCase {
         XCTAssertEqual(gotFolder.folderName, MocRealmFolder.dummyName[0])
     }
     //    Folder削除
-    func testDeleteFolder(){
+    func testDeleteFolder() {
 //        setup
         FolderDao.addFolder(name: MocRealmFolder.dummyName[0])
         XCTAssertEqual(moc.mocRealmFolder().findAll().count, 1)
@@ -87,7 +90,7 @@ class FolderDaoTests: XCTestCase {
         XCTAssertEqual(moc.mocRealmFolder().findAll().count, 0)
     }
     //    Folder全取得
-    func testGetAllFolder(){
+    func testGetAllFolder() {
 //        setup
         FolderDao.addFolder(name: MocRealmFolder.dummyName[0])
         FolderDao.addFolder(name: MocRealmFolder.dummyName[1])
@@ -102,7 +105,7 @@ class FolderDaoTests: XCTestCase {
         
     }
     //    Folder全削除
-    func testDeleteAllFolders(){
+    func testDeleteAllFolders() {
 //        setup
         FolderDao.addFolder(name: MocRealmFolder.dummyName[0])
         FolderDao.addFolder(name: MocRealmFolder.dummyName[1])

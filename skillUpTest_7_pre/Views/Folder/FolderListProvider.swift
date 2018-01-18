@@ -9,29 +9,35 @@
 import UIKit
 
 class FolderListProvider: NSObject {
-    var folderList:[FolderDto] = []
+    var folderList: [FolderDto] = []
     
-    func set(folderList:[FolderDto]){
+    func set(folderList: [FolderDto]) {
         self.folderList = folderList
     }
-    func getFolderId(indexpath:IndexPath) -> Int{
+    func getFolderId(indexpath: IndexPath) -> Int {
         return folderList[indexpath.row].folderId
     }
 }
-extension FolderListProvider:UITableViewDataSource{
+extension FolderListProvider: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return folderList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "folderCell")as! FolderCell
+        guard let cell = tableView
+            .dequeueReusableCell(withIdentifier: "folderCell",
+                                 for: indexPath) as? FolderCell else {
+                                    fatalError("FolderCellが取得できない。")
+        }
         
-        cell.NameLabel.text = folderList[indexPath.row].folderName
-        cell.countLabel.text = "\(folderList[indexPath.row].getListCount())"
+        cell.setNameLabelText(text: folderList[indexPath.row].folderName)
+        cell.setCountLabelText(count: folderList[indexPath.row].getListCount())
         
         return cell
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCellEditingStyle,
+                   forRowAt indexPath: IndexPath) {
         let folderId = folderList[indexPath.row].folderId
         FolderDao.deleteFolder(folderId: folderId)
         folderList.remove(at: indexPath.row)

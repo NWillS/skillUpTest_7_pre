@@ -8,20 +8,23 @@
 
 import Foundation
 
-final class FolderDao{
+final class FolderDao {
     static let daoHelper = RealmDaoHelper<FolderDto>()
     
 //    フォルダの追加
-    static func addFolder(name:String){
+    static func addFolder(name: String) {
         let folder = FolderDto()
-        folder.folderId = FolderDao.daoHelper.newId()!
+        guard let newId = FolderDao.daoHelper.newId() else {
+            return
+        }
+        folder.folderId = newId
         folder.folderName = name
         folder.updateDate = Date()
         
         FolderDao.daoHelper.add(object: folder)
     }
 //    フォルダの更新
-    static func updateFolder(folder: FolderDto){
+    static func updateFolder(folder: FolderDto) {
         guard let target = daoHelper.findFirst(key: folder.folderId as AnyObject) else {
             return
         }
@@ -34,15 +37,15 @@ final class FolderDao{
         daoHelper.update(object: newFolder)
     }
 //    フォルダの取得
-    static func getFolder(folderId:Int) -> FolderDto?{
-        guard let folder = FolderDao.daoHelper.findFirst(key: folderId as AnyObject) else{
+    static func getFolder(folderId: Int) -> FolderDto? {
+        guard let folder = FolderDao.daoHelper.findFirst(key: folderId as AnyObject) else {
             return nil
         }
         return folder
     }
 //    フォルダの削除
-    static func deleteFolder(folderId:Int){
-        guard let folder = FolderDao.daoHelper.findFirst(key: folderId as AnyObject) else{
+    static func deleteFolder(folderId: Int) {
+        guard let folder = FolderDao.daoHelper.findFirst(key: folderId as AnyObject) else {
             return
         }
         folder.tasks.forEach {
@@ -51,18 +54,18 @@ final class FolderDao{
         FolderDao.daoHelper.delete(object: folder)
     }
 //    フォルダの全取得
-    static func getAllFolders() -> [FolderDto]{
+    static func getAllFolders() -> [FolderDto] {
         let folderList = FolderDao.daoHelper.findAll().sorted(byKeyPath: "updateDate", ascending: false)
         return folderList.map { FolderDto(value: $0) }
     }
 //    フォルダの全削除
-    static func deleteAllFolders(){
+    static func deleteAllFolders() {
         TaskDao.deleteAllTasks()
         FolderDao.daoHelper.deleteAll()
     }
     
 //    フォルダ内の全Task取得
-    static func getAllTaskIn(folderId:Int) -> [TaskDto]{
+    static func getAllTaskIn(folderId: Int) -> [TaskDto] {
         let folder = FolderDao.getFolder(folderId: folderId)
         
         guard let tasks = folder?.tasks else {

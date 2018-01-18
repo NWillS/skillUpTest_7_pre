@@ -6,8 +6,8 @@
 //  Copyright © 2018年 Seidi Nakamura. All rights reserved.
 //
 
-import XCTest
 @testable import skillUpTest_7_pre
+import XCTest
 
 class FolderDtoTests: XCTestCase {
     
@@ -21,8 +21,8 @@ class FolderDtoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testFolderDto(){
-//        MARK:FolderDtoに値をセット
+    func testFolderDto() {
+        // MARK: - FolderDtoに値をセット
 //        setup
         let folderId = 1
         let folderName = "name"
@@ -40,8 +40,8 @@ class FolderDtoTests: XCTestCase {
         XCTAssertEqual(folder.updateDate, updateDate)
         
     }
-    func testGetTaskCount(){
-//        Mark:taskの個数
+    func testGetTaskCount() {
+        // MARK: - taskの個数
 //        setup
         let folderId = 1
         let folderName = "name"
@@ -51,7 +51,7 @@ class FolderDtoTests: XCTestCase {
         folder.folderId = folderId
         folder.folderName = folderName
         folder.updateDate = updateDate
-        for i in 0...2{
+        for i in 0...2 {
             let task = TaskDto()
             task.taskId = 1
             task.taskTitle = MocRealmTask.dummyTitle[i]
